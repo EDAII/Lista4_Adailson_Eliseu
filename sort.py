@@ -2,19 +2,19 @@
 import time
 import sys
 from os.path import isfile
-from gera_vector import gera_vector_rapido
+from gera_vector import gera_vector_rapido as gera_vector
 import benchmark
 from merge_sort.recursive_merge_sort import recursive_merge_sort as merge_sort
 from merge_sort.parallel_merge_sort import parallel_merge_sort
 from bucket_sort.bucket_sort import iterative_bucket_sort
+from heap_sort.heap_sort import heap_sort, heapSort#, good_heap_sort
 # from quick_sort.quick_sort import quick_sort # need to use another sort strategy
 
 strategies = {
-    'merge_sort': merge_sort
-    ,
-    'parallel_merge_sort': parallel_merge_sort
-    ,
+    'merge_sort': merge_sort,
+    'parallel_merge_sort': parallel_merge_sort,
     'iterative_bucket_sort': iterative_bucket_sort,
+    'heap_sort': heap_sort,
     # 'quick_sort': quick_sort
 }
 
@@ -40,7 +40,7 @@ def time_to_ms(time):
     return (int(1000*1000*time))/1000 # Use int() to truncate value in microseconds
 
 def run_test(sort_strategy=merge_sort, sort_strategy_name='merge_sort', number_of_elements=100000, start_of_range=0, end_of_range=1000000):
-    vector = gera_vector_rapido([start_of_range, end_of_range], number_of_elements)
+    vector = gera_vector([start_of_range, end_of_range], number_of_elements)
     start = time.time()
     vector = sort_strategy(vector)
     end = time.time()
