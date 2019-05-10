@@ -50,7 +50,7 @@ if __name__ == '__main__':
         df = get_dataset(file)
         df = sort_by_columns(df, ['dataset_size','time_in_ms'])
 
-        dataset_file_name = "_".join([x for x in "".join(file.split('performance_report/')[:]).split('_sort')[0].split('_')[1:] if not x.isdigit()]+['sort'])
+        dataset_file_name = "_".join("".join(file.split('performance_report/')[:]).split('_sort')[0].split('_')[1:] +['sort'])
         median_of = "{}_median".format(dataset_file_name)
 
         for i in range(df.dataset_size.unique().size):
