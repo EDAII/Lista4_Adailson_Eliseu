@@ -7,17 +7,19 @@ import benchmark
 from merge_sort.recursive_merge_sort import recursive_merge_sort as merge_sort
 from merge_sort.parallel_merge_sort import parallel_merge_sort
 from bucket_sort.bucket_sort import iterative_bucket_sort
-from bucket_sort.bucket_sort import bucket_radix_sort
-from radix_sort.radix_sort import radix_sort
-from heap_sort.heap_sort import heap_sort, heapSort#, good_heap_sort
+from bucket_sort.bucket_sort import bucket_iterative_radix_sort
+from radix_sort.radix_sort import iterative_radix_sort
+from radix_sort.radix_sort import recursive_radix_sort
+from heap_sort.heap_sort import heap_sort#, good_heap_sort
 # from quick_sort.quick_sort import quick_sort # need to use another sort strategy
 
 strategies = {
     'merge_sort': merge_sort,
     'parallel_merge_sort': parallel_merge_sort,
     'iterative_bucket_sort': iterative_bucket_sort,
-    'bucket_radix_sort': bucket_radix_sort,
-    'radix_sort': radix_sort,
+    'bucket_iterative_radix_sort': bucket_iterative_radix_sort,
+    'recursive_radix_sort': recursive_radix_sort,
+    'iterative_radix_sort': iterative_radix_sort,
     'heap_sort': heap_sort,
     # 'quick_sort': quick_sort
 }

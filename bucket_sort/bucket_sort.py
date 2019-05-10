@@ -1,34 +1,4 @@
-def radix_sort(vector, base=10):
-    if vector == []:
-        return
- 
-    def key_factory(digit, base):
-        def key(vector, index):
-            return ((vector[index]//(base**digit)) % base)
-        return key
-    largest = max(vector)
-    exp = 0
-    while base**exp <= largest:
-        vector = counting_sort(vector, base - 1, key_factory(exp, base))
-        exp = exp + 1
-    return vector
- 
-def counting_sort(vector, largest, key):
-    c = [0]*(largest + 1)
-    for i in range(len(vector)):
-        c[key(vector, i)] = c[key(vector, i)] + 1
- 
-    # Find the last index for each element
-    c[0] = c[0] - 1 # to decrement each element for zero-based indexing
-    for i in range(1, largest + 1):
-        c[i] = c[i] + c[i - 1]
- 
-    result = [None]*len(vector)
-    for i in range(len(vector) - 1, -1, -1):
-        result[c[key(vector, i)]] = vector[i]
-        c[key(vector, i)] = c[key(vector, i)] - 1
- 
-    return result
+import radix_sort.radix_sort as radix_sort
 
 def insertionSort(vector): 
 	for i in range(1, len(vector)): 
@@ -63,7 +33,7 @@ def iterative_bucket_sort(vector):
 			k += 1
 	return vector
 
-def bucket_radix_sort(vector): 
+def bucket_iterative_radix_sort(vector): 
 	arr = [] 
 	number_buckets = 10
 	for i in range(number_buckets): 
@@ -77,7 +47,7 @@ def bucket_radix_sort(vector):
 		arr[sig].append(vector[j])
 	
 	for i in range(number_buckets): 
-		arr[i] = radix_sort(arr[i]) 
+		arr[i] = radix_sort.iterative_radix_sort(arr[i]) 
 		
 	k = 0
 	for i in range(number_buckets): 
